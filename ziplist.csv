@@ -1,0 +1,43 @@
+borough,area,zip
+Bronx,"Central Bronx",10453
+Bronx,"Bronx Park and Fordham",10458
+Bronx,"High Bridge and Morrisania",10451
+Bronx,"Hunts Point and Mott Haven",10454
+Bronx,"Kingsbridge and Riverdale",10463
+Bronx,"Northeast Bronx",10466
+Bronx,"Southeast Bronx",10461
+Brooklyn,"Central Brooklyn",11212
+Brooklyn,"Southwest Brooklyn",11209
+Brooklyn,"Borough Park",11204
+Brooklyn,"Canarsie and Flatlands",11234
+Brooklyn,"Southern Brooklyn",11223
+Brooklyn,"Northwest Brooklyn",11201
+Brooklyn,"Flatbush",11203
+Brooklyn,"East New York and New Lots",11207
+Brooklyn,"Greenpoint",11211
+Brooklyn,"Sunset Park",11220
+Brooklyn,"Bushwick and Williamsburg",11206
+Manhattan,"Central Harlem",10026
+Manhattan,"Chelsea and Clinton",10001
+Manhattan,"East Harlem",10029
+Manhattan,"Gramercy Park and Murray Hill",10010
+Manhattan,"Greenwich Village and Soho",10012
+Manhattan,"Lower Manhattan",10004
+Manhattan,"Lower East Side",10002
+Manhattan,"Upper East Side",10021
+Manhattan,"Upper West Side",10023
+Manhattan,"Inwood and Washington Heights",10031
+Queens,"Northeast Queens",11361
+Queens,"North Queens",11354
+Queens,"Central Queens",11365
+Queens,"Jamaica",11412
+Queens,"Northwest Queens",11101
+Queens,"West Central Queens",11374
+Queens,"Rockaways",11691
+Queens,"Southeast Queens",11004
+Queens,"Southwest Queens",11414
+Queens,"West Queens",11368
+Staten Island,"Port Richmond",10302
+Staten Island,"South Shore",10306
+Staten Island,"Stapleton and St. George",10301
+Staten Island,"Mid-Island",10314

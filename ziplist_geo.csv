@@ -1,0 +1,43 @@
+n,borough,area,zip,helper,latitude,longitude
+0,Bronx,Central Bronx,10453,"10453 NY, New York",40.8515872,-73.9154069
+1,Bronx,Bronx Park and Fordham,10458,"10458 NY, New York",40.8621792,-73.88601
+2,Bronx,High Bridge and Morrisania,10451,"10451 NY, New York",40.8187386,-73.9271644
+3,Bronx,Hunts Point and Mott Haven,10454,"10454 NY, New York",40.8022594,-73.9154069
+4,Bronx,Kingsbridge and Riverdale,10463,"10463 NY, New York",40.8803247,-73.9095279
+5,Bronx,Northeast Bronx,10466,"10466 NY, New York",40.8887394,-73.8477874
+6,Bronx,Southeast Bronx,10461,"10461 NY, New York",40.8476284,-73.8360251
+7,Brooklyn,Central Brooklyn,11212,"11212 NY, New York",40.6639181,-73.9154069
+8,Brooklyn,Southwest Brooklyn,11209,"11209 NY, New York",40.6212119,-74.03294989999999
+9,Brooklyn,Borough Park,11204,"11204 NY, New York",40.6195067,-73.9859414
+10,Brooklyn,Canarsie and Flatlands,11234,"11234 NY, New York",40.6007956,-73.9065883
+11,Brooklyn,Southern Brooklyn,11223,"11223 NY, New York",40.6009233,-73.977126
+12,Brooklyn,Northwest Brooklyn,11201,"11201 NY, New York",40.6986772,-73.9859414
+13,Brooklyn,Flatbush,11203,"11203 NY, New York",40.6515882,-73.93304289999999
+14,Brooklyn,East New York and New Lots,11207,"11207 NY, New York",40.6655101,-73.8918897
+15,Brooklyn,Greenpoint,11211,"11211 NY, New York",40.7093358,-73.9565551
+16,Brooklyn,Sunset Park,11220,"11220 NY, New York",40.6385229,-74.0153231
+17,Brooklyn,Bushwick and Williamsburg,11206,"11206 NY, New York",40.7047738,-73.9418603
+18,Manhattan,Central Harlem,10026,"10026 NY, New York",40.8032131,-73.95258249999999
+19,Manhattan,Chelsea and Clinton,10001,"10001 NY, New York",40.75368539999999,-73.9991637
+20,Manhattan,East Harlem,10029,"10029 NY, New York",40.79164069999999,-73.9447994
+21,Manhattan,Gramercy Park and Murray Hill,10010,"10010 NY, New York",40.7388319,-73.98153370000001
+22,Manhattan,Greenwich Village and Soho,10012,"10012 NY, New York",40.7250632,-73.9976946
+23,Manhattan,Lower Manhattan,10004,"10004 NY, New York",40.7038704,-74.0138541
+24,Manhattan,Lower East Side,10002,"10002 NY, New York",40.7135097,-73.9859414
+25,Manhattan,Upper East Side,10021,"10021 NY, New York",40.7700703,-73.9580246
+26,Manhattan,Upper West Side,10023,"10023 NY, New York",40.7769059,-73.9800645
+27,Manhattan,Inwood and Washington Heights,10031,"10031 NY, New York",40.8270209,-73.9506774
+28,Queens,Northeast Queens,11361,"11361 NY, New York",40.7622954,-73.7742616
+29,Queens,North Queens,11354,"11354 NY, New York",40.7699016,-73.8272029
+30,Queens,Central Queens,11365,"11365 NY, New York",40.7421943,-73.7889689
+31,Queens,Jamaica,11412,"11412 NY, New York",40.6963978,-73.762495
+32,Queens,Northwest Queens,11101,"11101 NY, New York",40.7443091,-73.9418603
+33,Queens,West Central Queens,11374,"11374 NY, New York",40.72557219999999,-73.8624893
+34,Queens,Rockaways,11691,"11691 NY, New York",40.6024346,-73.762495
+35,Queens,Southeast Queens,11004,"11004 NY, New York",40.7430884,-73.7095365
+36,Queens,Southwest Queens,11414,"11414 NY, New York",40.6616787,-73.8477874
+37,Queens,West Queens,11368,"11368 NY, New York",40.7506343,-73.8477874
+38,Staten Island,Port Richmond,10302,"10302 NY, New York",40.6311567,-74.1386767
+39,Staten Island,South Shore,10306,"10306 NY, New York",40.5729336,-74.12986839999999
+40,Staten Island,Stapleton and St. George,10301,"10301 NY, New York",40.6274394,-74.0946311
+41,Staten Island,Mid-Island,10314,"10314 NY, New York",40.5952146,-74.1827119
