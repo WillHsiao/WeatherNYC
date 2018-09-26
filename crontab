@@ -1,1 +1,1 @@
-30 6 * * * /var/www/html/cronjob
+30 6,12 * * * /var/www/html/cronjob

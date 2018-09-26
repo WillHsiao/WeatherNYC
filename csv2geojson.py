@@ -5,6 +5,7 @@ from geojson import Feature, FeatureCollection, Point, Polygon
 import pandas as pd
 import numpy as np
 import json
+import pytz
 from datetime import datetime
 
 def getZipInfo(zip):
@@ -13,6 +14,9 @@ def getZipInfo(zip):
 	return row
 
 class GetValue:
+	now = pytz.utc.localize(datetime.utcnow())
+	TimeStart = now.astimezone(pytz.timezone("US/Eastern"))
+	TimeEnd   = now.astimezone(pytz.timezone("US/Eastern"))
 	def __init__(self, r, target, r2):
 		self.__r = r
 		self.__target = target
@@ -25,17 +29,21 @@ class GetValue:
 		df2['endTime'] = df2['endTime'].dt.tz_localize('UTC').dt.tz_convert('US/Eastern')
 
 		df = pd.DataFrame(r['properties'][self.__target]['values'])
-		df.columns = ['Time', 'c1']
-		#df['Time'] = df['Time'].str[5:16].replace('T', ' ')
-		df['Time'] = pd.to_datetime(df['Time'].str[:16].replace('T', ' '))
-		df['Time'] = df['Time'].dt.tz_localize('UTC').dt.tz_convert('US/Eastern')
+		df.columns = ['Time', 'c1'] #rename pandas column header
+		df['Time'] = pd.to_datetime(df['Time'].str[:16].replace('T', ' ')) #convert to time format
+		df['Time'] = df['Time'].dt.tz_localize('UTC').dt.tz_convert('US/Eastern') #convert to EST time zone
+
+		GetValue.TimeStart = df['Time'].min()
+		if GetValue.TimeStart > df['Time'].min():
+			GetValue.TimeStart = df['Time'].min()
+		if GetValue.TimeEnd   < df['Time'].max():
+			GetValue.TimeEnd = df['Time'].max()
 
 		df['TimeStr'] = df['Time'].dt.strftime('%m-%d %H:%M')
 
 		minV = df.loc[df['c1'].idxmin()]
 		maxV = df.loc[df['c1'].idxmax()]
-		#print(minV['Time'])
-		#print(df2['startTime'])
+
 		HighTimeRec = df2[(df2['startTime'] <= maxV['Time']) & (df2['endTime'] >= maxV['Time'])]
 		LTout = ''
 		HTout = ''
@@ -77,7 +85,6 @@ for filename in os.listdir('wdata'):
 	latitude, longitude = map(float, (zInfo['latitude'], zInfo['longitude']))
 	features.append(
 		Feature(
-#				geometry = Polygon(r['geometry']['coordinates']),
 			geometry = Point((longitude, latitude)),
 			properties = {
 				'Area': zInfo['area'].to_string(index=False) + ' (' + zInfo['borough'].to_string(index=False) + ')',
@@ -107,5 +114,11 @@ for filename in os.listdir('wdata'):
 	)
 collection = FeatureCollection(features)
 
+#print(GetValue.TimeStart)
+#print(GetValue.TimeEnd)
+#GetValue.TimeStart = df['Time'].min().strftime('%m-%d %H:%M')
+
 with open("geojson.json", "w") as f:
 	f.write('%s' % collection)
+with open("range.txt", "w") as f:
+	f.write('%s' % GetValue.TimeStart.strftime('%m-%d %H:%M') + ' to ' + GetValue.TimeEnd.strftime('%m-%d %H:%M'))

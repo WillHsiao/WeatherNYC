@@ -28,4 +28,3 @@ with open('ziplist_geo.csv', newline='') as csvfile:
 	for A, borough, area, zipCode, helper, latitude, longitude in reader:
 		url = 'https://api.weather.gov/points/' + latitude + ',' + longitude
 		GetForecastURL(url, zipCode)
-		
