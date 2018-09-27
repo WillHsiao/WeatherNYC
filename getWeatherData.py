@@ -5,6 +5,8 @@ import csv, json
 from geojson import Feature, FeatureCollection, Point
 
 def GetForecastURL(url, fname):
+	print(fname)
+	print(url)
 	token = 'kSOuCoucFpFZxAgfjKIYTuwjDBaFCBka'
 	creds = dict(token=token)
  

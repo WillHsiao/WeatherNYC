@@ -22,6 +22,7 @@
 				<h1>NYC Weather 7 Days Forecast<span>modify threshold to refresh warnings </span></h1>
 				<label><span>Lowest Temperature: </span><input type="text" id="templow" value="32"><img src='img/cold.png'></label>
 				<label><span>Highest Temperature: </span><input type="text" id="temphigh" value="100"><img src='img/sunny.png'></label>
+				<label><span>Highest Heat Index: </span><input type="text" id="heathigh" value="100"><img src='img/heat.png'></label>
 				<label><span>Highest Wind Speed: </span><input type="text" id="windhigh" value="12"><img src='img/windy.png'></label>
 				<label><span>Highest Snow Fall (inches): </span><input type="text" id="snowhigh" value="5"><img src='img/snowy.png'></label>
 				<label><span>Highest Rain Fall (inches): </span><input type="text" id="rainhigh" value="3"><img src='img/rainy.png'></label>
@@ -78,6 +79,10 @@ function drawMap() {
       iconUrl: 'img/rainy.png', shadowUrl: 'img/marker-shadow.png',
       iconSize: [32, 37], iconAnchor: [12, 41], popupAnchor: [1, -34], shadowSize: [41, 41]
     });
+    var heatIcon = new L.Icon({
+      iconUrl: 'img/heat.png', shadowUrl: 'img/marker-shadow.png',
+      iconSize: [32, 37], iconAnchor: [12, 41], popupAnchor: [1, -34], shadowSize: [41, 41]
+    });
 
     var geojson = L.geoJson(data, {
 
@@ -86,11 +91,13 @@ function drawMap() {
         layer.bindPopup('<b> ' + feature.properties.Area + '</b>'
 			+ '<br>Lowest Temp: ' + getColor('TL',feature.properties.TempLowV) + feature.properties.TempLow + '</font> (' + feature.properties.TempLowTime + ')' + getDetail('TL',feature.properties.TempLowV, feature.properties.TempLowTimeDesc) 
 			+ '<br>Highest Temp: ' + getColor('TH',feature.properties.TempHighV) + feature.properties.TempHigh + '</font> (' + feature.properties.TempHighTime + ')' + getDetail('TH',feature.properties.TempHighV, feature.properties.TempHighTimeDesc) 
+			+ '<br>Highest HeatIndex: ' + getColor('HH',feature.properties.HeatHighV) + feature.properties.HeatHigh + '</font> (' + feature.properties.HeatHighTime + ')' + getDetail('HH',feature.properties.HeatHighV, feature.properties.HeatHighTimeDesc) 
 			+ '<br>Highest Wind Speed: ' + getColor('WH',feature.properties.WindHighV) + feature.properties.WindHigh + '</font> (' + feature.properties.WindHighTime + ')' + getDetail('WH',feature.properties.WindHighV,feature.properties.WindHighTimeDesc) 
 			+ '<br>Highest Snow Fall: ' + getColor('SH',feature.properties.SnowHighV) + feature.properties.SnowHigh + '</font> (' + feature.properties.SnowHighTime + ')' + getDetail('SH',feature.properties.SnowHighV,feature.properties.SnowHighTimeDesc) 
 			+ '<br>Highest Rain Fall: ' + getColor('RH',feature.properties.RainHighV) + feature.properties.RainHigh + '</font> (' + feature.properties.RainHighTime + ')' + getDetail('RH',feature.properties.RainHighV,feature.properties.RainHighTimeDesc) );
         layer.setIcon(getIcon(feature.properties.TempLowV,
                               feature.properties.TempHighV,
+                              feature.properties.HeatHighV,
                               feature.properties.WindHighV,
                               feature.properties.SnowHighV,
                               feature.properties.RainHighV
@@ -99,10 +106,11 @@ function drawMap() {
     });
 
     //get icons based on difficulty rating
-    function getIcon(TL,TH,WH,SH,RH) {
+    function getIcon(TL,TH,HH,WH,SH,RH) {
       if(SH >= document.getElementById("snowhigh").value) { return snowyIcon; }
       if(TL <= document.getElementById("templow").value) { return coldIcon; }
       if(TH >= document.getElementById("temphigh").value) { return sunnyIcon; }
+      if(HH >= document.getElementById("heathigh").value) { return heatIcon; }
       if(WH >= document.getElementById("windhigh").value) { return windyIcon; }
       if(RH >= document.getElementById("rainhigh").value) { return rainyIcon; }
       return greyIcon;
@@ -113,6 +121,8 @@ function drawMap() {
           if(v <= document.getElementById("templow").value) { return '<font color=red>' } break;
 	case 'TH':
           if(v >= document.getElementById("temphigh").value) { return '<font color=red>' } break;
+	case 'HH':
+          if(v >= document.getElementById("heathigh").value) { return '<font color=red>' } break;
 	case 'WH':
           if(v >= document.getElementById("windhigh").value) { return '<font color=red>' } break;
 	case 'RH':
@@ -129,6 +139,8 @@ function drawMap() {
           if(v <= document.getElementById("templow").value) { return '<br><font color=gray>' + txt + '</font><br>' } break;
 	case 'TH':
           if(v >= document.getElementById("temphigh").value) { return '<br><font color=gray>' + txt + '</font><br>' } break;
+	case 'HH':
+          if(v >= document.getElementById("heathigh").value) { return '<br><font color=gray>' + txt + '</font><br>' } break;
 	case 'WH':
           if(v >= document.getElementById("windhigh").value) { return '<br><font color=gray>' + txt + '</font><br>' } break;
 	case 'RH':

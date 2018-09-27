@@ -64,6 +64,7 @@ features = []
 for filename in os.listdir('wdata'):
 	if filename[-1] == 'f':
 		continue
+	print(filename)
 	with open('wdata/' + filename + '_f') as f2:
 		r2 = json.load(f2)
 	with open('wdata/' + filename) as f:
@@ -81,6 +82,7 @@ for filename in os.listdir('wdata'):
 	v_wind = GetValue(r, 'windSpeed', r2)
 	v_snow = GetValue(r, 'snowfallAmount', r2)
 	v_rain = GetValue(r, 'quantitativePrecipitation', r2)
+	v_heat = GetValue(r, 'heatIndex', r2)
 
 	latitude, longitude = map(float, (zInfo['latitude'], zInfo['longitude']))
 	features.append(
@@ -96,6 +98,10 @@ for filename in os.listdir('wdata'):
 				'TempHighV': int(round(v_temp.getAll()['High']* 1.8 + 32, 0)),
 				'TempHighTime': v_temp.getAll()['HighTime'],
 				'TempHighTimeDesc': v_temp.getAll()['HighTimeDesc'],
+				'HeatHigh': str(int(round(v_heat.getAll()['High']* 1.8 + 32, 0))),
+				'HeatHighV': int(round(v_heat.getAll()['High']* 1.8 + 32, 0)),
+				'HeatHighTime': v_heat.getAll()['HighTime'],
+				'HeatHighTimeDesc': v_heat.getAll()['HighTimeDesc'],
 				'WindHigh': str(round(v_wind.getAll()['High'],1)) + ' mph',
 				'WindHighV': round(v_wind.getAll()['High'],1),
 				'WindHighTime': v_wind.getAll()['HighTime'],
