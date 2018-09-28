@@ -22,11 +22,11 @@ class GetValue:
 		self.__target = target
 		self.__r2 = r2
 	def getAll(self):
-		df2 = pd.DataFrame(r2['properties']['periods'])
-		df2['startTime'] = pd.to_datetime(df2['startTime'].str[:16].replace('T', ' '))
-		df2['startTime'] = df2['startTime'].dt.tz_localize('UTC').dt.tz_convert('US/Eastern')
-		df2['endTime'] = pd.to_datetime(df2['endTime'].str[:16].replace('T', ' '))
-		df2['endTime'] = df2['endTime'].dt.tz_localize('UTC').dt.tz_convert('US/Eastern')
+		#df2 = pd.DataFrame(r2['properties']['periods'])
+		#df2['startTime'] = pd.to_datetime(df2['startTime'].str[:16].replace('T', ' '))
+		#df2['startTime'] = df2['startTime'].dt.tz_localize('UTC').dt.tz_convert('US/Eastern')
+		#df2['endTime'] = pd.to_datetime(df2['endTime'].str[:16].replace('T', ' '))
+		#df2['endTime'] = df2['endTime'].dt.tz_localize('UTC').dt.tz_convert('US/Eastern')
 
 		df = pd.DataFrame(r['properties'][self.__target]['values'])
 		df.columns = ['Time', 'c1'] #rename pandas column header
@@ -44,14 +44,14 @@ class GetValue:
 		minV = df.loc[df['c1'].idxmin()]
 		maxV = df.loc[df['c1'].idxmax()]
 
-		HighTimeRec = df2[(df2['startTime'] <= maxV['Time']) & (df2['endTime'] >= maxV['Time'])]
 		LTout = ''
 		HTout = ''
-		if HighTimeRec.empty == False:
-			HTout = str(HighTimeRec['detailedForecast'].iloc[0])
-		LowTimeRec  = df2[(df2['startTime'] <= minV['Time']) & (df2['endTime'] >= minV['Time'])]
-		if LowTimeRec.empty == False:
-			LTout = str(LowTimeRec['detailedForecast'].iloc[0])
+		#HighTimeRec = df2[(df2['startTime'] <= maxV['Time']) & (df2['endTime'] >= maxV['Time'])]
+		#if HighTimeRec.empty == False:
+		#	HTout = str(HighTimeRec['detailedForecast'].iloc[0])
+		#LowTimeRec  = df2[(df2['startTime'] <= minV['Time']) & (df2['endTime'] >= minV['Time'])]
+		#if LowTimeRec.empty == False:
+		#	LTout = str(LowTimeRec['detailedForecast'].iloc[0])
 		return {'Low':     minV['c1'] ,
 			'High':    maxV['c1'] ,
 			'LowTime':     str(minV['TimeStr']).replace('T', ' ') ,
@@ -65,8 +65,9 @@ for filename in os.listdir('wdata'):
 	if filename[-1] == 'f':
 		continue
 	print(filename)
-	with open('wdata/' + filename + '_f') as f2:
-		r2 = json.load(f2)
+#	with open('wdata/' + filename + '_f') as f2:
+#		r2 = json.load(f2)
+	r2 = { "mock": {} }
 	with open('wdata/' + filename) as f:
 		r = json.load(f)
 

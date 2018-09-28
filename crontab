@@ -1,1 +1,2 @@
 30 6,12 * * * /var/www/html/cronjob
+0 7 * * * /var/www/html/cronjob_sms
