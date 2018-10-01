@@ -20,12 +20,12 @@
 			<div class="column">
 				<form class="dark-matter">
 				<h1>NYC Weather 7 Days Forecast<span>modify threshold to refresh warnings </span></h1>
-				<label><span>Lowest Temperature: </span><input type="text" id="templow" value="32"><img src='img/cold.png'></label>
-				<label><span>Highest Temperature: </span><input type="text" id="temphigh" value="100"><img src='img/sunny.png'></label>
-				<label><span>Highest Heat Index: </span><input type="text" id="heathigh" value="100"><img src='img/heat.png'></label>
-				<label><span>Highest Wind Speed: </span><input type="text" id="windhigh" value="12"><img src='img/windy.png'></label>
-				<label><span>Highest Snow Fall (inches): </span><input type="text" id="snowhigh" value="5"><img src='img/snowy.png'></label>
-				<label><span>Highest Rain Fall (inches): </span><input type="text" id="rainhigh" value="3"><img src='img/rainy.png'></label>
+				<label><span>Lowest Temperature: </span><input type="text" id="templow" value="<? echo $_GET['LT'] ? $_GET['LT'] : 32 ?>"><img src='img/cold.png'></label>
+				<label><span>Highest Temperature: </span><input type="text" id="temphigh" value="<? echo $_GET['HT'] ? $_GET['HT'] : 100 ?>"><img src='img/sunny.png'></label>
+				<label><span>Highest Heat Index: </span><input type="text" id="heathigh" value="<? echo $_GET['HH'] ? $_GET['HH'] : 100 ?>"><img src='img/heat.png'></label>
+				<label><span>Highest Wind Speed: </span><input type="text" id="windhigh" value="<? echo $_GET['HW'] ? $_GET['HW'] : 12 ?>"><img src='img/windy.png'></label>
+				<label><span>Highest Snow Fall (inches): </span><input type="text" id="snowhigh" value="<? echo $_GET['HS'] ? $_GET['HS'] : 5 ?>"><img src='img/snowy.png'></label>
+				<label><span>Highest Rain Fall (inches): </span><input type="text" id="rainhigh" value="<? echo $_GET['HR'] ? $_GET['HR'] : 3 ?>"><img src='img/rainy.png'></label>
 				<label><span></span><input type="button" class="button" onclick="myFunction()" value="Refresh"></label>
 				</form>
 			</div>

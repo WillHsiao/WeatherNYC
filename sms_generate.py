@@ -46,6 +46,7 @@ for filename in os.listdir('sns'):
 			continue
 		res = {'templow':0, 'temphigh':0, 'heathigh':0, 'rainhigh':0, 'snowhigh':0, 'windhigh':0}
 		resD = {'templow':'temperature lower', 'temphigh':'temperature lower', 'heathigh':'heat higher', 'rainhigh':'rainfall higher', 'snowhigh':'snow accumulation higher', 'windhigh':'wind speed higher'}
+		resP = {'templow':'LT', 'temphigh':'HT', 'heathigh':'HH', 'rainhigh':'HR', 'snowhigh':'HS', 'windhigh':'HW'}
 		u = json.load(p)
 		print(filename + ': ' + u['phone'])
 		for filename in os.listdir('wdata'):
@@ -77,17 +78,19 @@ for filename in os.listdir('sns'):
 			
 	#print(res)
 	Msg = ''
+	Par = ''
 	for x in res:
 		if res[x] > 0:
-			Msg = 'NYC Weather Alert: ' + str(res[x]) + ' area(s) have ' + resD[x] + ' than ' + str(u['threshold'][x]) + ' in a week, please visit http://18.222.210.44 for detail'
-	q = {'phone':'','msg':'','username':''}
-	q['phone'] = u['phone']
-	q['username'] = u['username']
-	q['msg'] = Msg
-	q = json.dumps(q)
-	print(q)
-	with open('sns/sms' + u['fname'], "w") as f:
-		f.write('%s' % q)
+			Par = Par + str(resP[x]) + '=' + str(u['threshold'][x]) + '&'
+			Msg = 'NYC Weather Alert: ' + str(res[x]) + ' area(s) have ' + resD[x] + ' than ' + str(u['threshold'][x]) + ' in a week, please visit http://18.222.210.44/?' + Par + ' for detail'
+			q = {'phone':'','msg':'','username':''}
+			q['phone'] = u['phone']
+			q['username'] = u['username']
+			q['msg'] = Msg
+			q = json.dumps(q)
+			print(q)
+			with open('sns/sms' + u['fname'], "w") as f:
+				f.write('%s' % q)
 
 #with open("range.txt", "w") as f:
 #	f.write('%s' % GetValue.TimeStart.strftime('%m-%d %H:%M') + ' to ' + GetValue.TimeEnd.strftime('%m-%d %H:%M'))

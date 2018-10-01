@@ -1,7 +1,7 @@
 import boto3, os, json
 
 def sendsms(pnum, msg):
-	with open('key') as p:
+	with open('../key') as p:
 		k = json.load(p)
 	client = boto3.client(
 		"sns",
