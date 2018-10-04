@@ -1,2 +1,2 @@
-30 6,12 * * * /var/www/html/cronjob
+30 7,13 * * * /var/www/html/cronjob
 30 8 * * * /var/www/html/cronjob_sms

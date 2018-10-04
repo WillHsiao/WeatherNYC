@@ -19,10 +19,10 @@ def GetForecastURL(url, fname):
 		for block in r2.iter_content(1024):
 			handle.write(block)
 
-	r2 = requests.get(urlNew2, headers=creds)
-	with open("wdata/" + fname + '_f', 'wb') as handle:
-		for block in r2.iter_content(1024):
-			handle.write(block)
+#	r2 = requests.get(urlNew2, headers=creds)
+#	with open("wdata/" + fname + '_f', 'wb') as handle:
+#		for block in r2.iter_content(1024):
+#			handle.write(block)
 
 with open('ziplist_geo.csv', newline='') as csvfile:
 	reader = csv.reader(csvfile, delimiter=',')

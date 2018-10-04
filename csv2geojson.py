@@ -6,7 +6,7 @@ import pandas as pd
 import numpy as np
 import json
 import pytz
-from datetime import datetime
+from datetime import datetime, timedelta
 
 def getZipInfo(zip):
 	df = pd.read_csv('ziplist_geo.csv')
@@ -15,8 +15,10 @@ def getZipInfo(zip):
 
 class GetValue:
 	now = pytz.utc.localize(datetime.utcnow())
-	TimeStart = now.astimezone(pytz.timezone("US/Eastern"))
+	TimeNow   = now.astimezone(pytz.timezone("US/Eastern"))
+	TimeStart = now.astimezone(pytz.timezone("US/Eastern")) + timedelta(hours=9) #add some hours so begin time of forecast surface
 	TimeEnd   = now.astimezone(pytz.timezone("US/Eastern"))
+	print(TimeNow)
 	def __init__(self, r, target, r2):
 		self.__r = r
 		self.__target = target
@@ -32,8 +34,9 @@ class GetValue:
 		df.columns = ['Time', 'c1'] #rename pandas column header
 		df['Time'] = pd.to_datetime(df['Time'].str[:16].replace('T', ' ')) #convert to time format
 		df['Time'] = df['Time'].dt.tz_localize('UTC').dt.tz_convert('US/Eastern') #convert to EST time zone
+		
+		df = df[df['Time'] >= GetValue.TimeNow] #filter out the forecast time in the past
 
-		GetValue.TimeStart = df['Time'].min()
 		if GetValue.TimeStart > df['Time'].min():
 			GetValue.TimeStart = df['Time'].min()
 		if GetValue.TimeEnd   < df['Time'].max():
