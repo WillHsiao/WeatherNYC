@@ -1,4 +1,4 @@
 cd /var/www/html/
 source env/bin/activate
-/usr/bin/python3.6 sms_generate.py
-/usr/bin/python3.6 sms.py
+/usr/bin/python sms_generate.py
+/usr/bin/python sms.py
