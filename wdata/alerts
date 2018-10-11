@@ -1,0 +1,411 @@
+{
+    "@context": [
+        "https://raw.githubusercontent.com/geojson/geojson-ld/master/contexts/geojson-base.jsonld",
+        {
+            "wx": "https://api.weather.gov/ontology#",
+            "@vocab": "https://api.weather.gov/ontology#"
+        }
+    ],
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "id": "https://api.weather.gov/alerts/NWS-IDP-PROD-3163909-2787729",
+            "type": "Feature",
+            "geometry": null,
+            "properties": {
+                "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-3163909-2787729",
+                "@type": "wx:Alert",
+                "id": "NWS-IDP-PROD-3163909-2787729",
+                "areaDesc": "New York (Manhattan); Northern New London; Western Essex; Western Union; Rockland; Southern Middlesex; Southwest Suffolk; Northern Westchester; Orange; Richmond (Staten Is.); Western Bergen; Northeast Suffolk; Southern Queens; Southern New London; Northern Middlesex; Northern Fairfield; Northern Queens; Eastern Union; Southeast Suffolk; Eastern Essex; Southern New Haven; Eastern Passaic; Northwest Suffolk; Southern Westchester; Southern Fairfield; Putnam; Bronx; Kings (Brooklyn); Northern Nassau; Northern New Haven; Southern Nassau; Western Passaic; Hudson; Eastern Bergen",
+                "geocode": {
+                    "UGC": [
+                        "NYZ072",
+                        "CTZ008",
+                        "NJZ105",
+                        "NJZ107",
+                        "NYZ069",
+                        "CTZ011",
+                        "NYZ080",
+                        "NYZ070",
+                        "NYZ067",
+                        "NYZ074",
+                        "NJZ103",
+                        "NYZ079",
+                        "NYZ178",
+                        "CTZ012",
+                        "CTZ007",
+                        "CTZ005",
+                        "NYZ176",
+                        "NJZ108",
+                        "NYZ081",
+                        "NJZ106",
+                        "CTZ010",
+                        "NJZ004",
+                        "NYZ078",
+                        "NYZ071",
+                        "CTZ009",
+                        "NYZ068",
+                        "NYZ073",
+                        "NYZ075",
+                        "NYZ177",
+                        "CTZ006",
+                        "NYZ179",
+                        "NJZ002",
+                        "NJZ006",
+                        "NJZ104"
+                    ],
+                    "SAME": [
+                        "036061",
+                        "009011",
+                        "034013",
+                        "034039",
+                        "036087",
+                        "009007",
+                        "036103",
+                        "036119",
+                        "036071",
+                        "036085",
+                        "034003",
+                        "036081",
+                        "009001",
+                        "009009",
+                        "034031",
+                        "036079",
+                        "036005",
+                        "036047",
+                        "036059",
+                        "034017"
+                    ]
+                },
+                "affectedZones": [
+                    "https://api.weather.gov/zones/forecast/NYZ072",
+                    "https://api.weather.gov/zones/forecast/CTZ008",
+                    "https://api.weather.gov/zones/forecast/NJZ105",
+                    "https://api.weather.gov/zones/forecast/NJZ107",
+                    "https://api.weather.gov/zones/forecast/NYZ069",
+                    "https://api.weather.gov/zones/forecast/CTZ011",
+                    "https://api.weather.gov/zones/forecast/NYZ080",
+                    "https://api.weather.gov/zones/forecast/NYZ070",
+                    "https://api.weather.gov/zones/forecast/NYZ067",
+                    "https://api.weather.gov/zones/forecast/NYZ074",
+                    "https://api.weather.gov/zones/forecast/NJZ103",
+                    "https://api.weather.gov/zones/forecast/NYZ079",
+                    "https://api.weather.gov/zones/forecast/NYZ178",
+                    "https://api.weather.gov/zones/forecast/CTZ012",
+                    "https://api.weather.gov/zones/forecast/CTZ007",
+                    "https://api.weather.gov/zones/forecast/CTZ005",
+                    "https://api.weather.gov/zones/forecast/NYZ176",
+                    "https://api.weather.gov/zones/forecast/NJZ108",
+                    "https://api.weather.gov/zones/forecast/NYZ081",
+                    "https://api.weather.gov/zones/forecast/NJZ106",
+                    "https://api.weather.gov/zones/forecast/CTZ010",
+                    "https://api.weather.gov/zones/forecast/NJZ004",
+                    "https://api.weather.gov/zones/forecast/NYZ078",
+                    "https://api.weather.gov/zones/forecast/NYZ071",
+                    "https://api.weather.gov/zones/forecast/CTZ009",
+                    "https://api.weather.gov/zones/forecast/NYZ068",
+                    "https://api.weather.gov/zones/forecast/NYZ073",
+                    "https://api.weather.gov/zones/forecast/NYZ075",
+                    "https://api.weather.gov/zones/forecast/NYZ177",
+                    "https://api.weather.gov/zones/forecast/CTZ006",
+                    "https://api.weather.gov/zones/forecast/NYZ179",
+                    "https://api.weather.gov/zones/forecast/NJZ002",
+                    "https://api.weather.gov/zones/forecast/NJZ006",
+                    "https://api.weather.gov/zones/forecast/NJZ104"
+                ],
+                "references": [
+                    {
+                        "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-3161670-2785677",
+                        "identifier": "NWS-IDP-PROD-3161670-2785677",
+                        "sender": "w-nws.webmaster@noaa.gov",
+                        "sent": "2018-10-10T15:29:00-04:00"
+                    }
+                ],
+                "sent": "2018-10-11T04:22:00-04:00",
+                "effective": "2018-10-11T04:22:00-04:00",
+                "onset": "2018-10-11T12:00:00-04:00",
+                "expires": "2018-10-11T18:00:00-04:00",
+                "ends": "2018-10-12T06:00:00-04:00",
+                "status": "Actual",
+                "messageType": "Update",
+                "category": "Met",
+                "severity": "Severe",
+                "certainty": "Possible",
+                "urgency": "Future",
+                "event": "Flash Flood Watch",
+                "sender": "w-nws.webmaster@noaa.gov",
+                "senderName": "NWS Upton NY",
+                "headline": "Flash Flood Watch issued October 11 at 4:22AM EDT expiring October 12 at 6:00AM EDT by NWS Upton NY",
+                "description": "The Flash Flood Watch continues for\n\n* All of southern Connecticut, northeast New Jersey, and southeast\nNew York, including the following area. In southern Connecticut,\nFairfield, New Haven, Middlesex, and New London counties. In\nnortheast New Jersey, Bergen, Passaic, Hudson, Essex, and Union\ncounties. In southeast New York, all five boroughs of New York\nCity, plus Nassau, Suffolk, Westchester, Rockland, Putnam, and\nOrange counties.\n\n* From noon EDT today through late tonight.\n\n* Tropical moisture surging northward from eastern North Carolina\nand Virginia will move up into the area this afternoon and\ntonight. Showers and a few thunderstorms will develop by this\nafternoon and continue into tonight, and the rain may be heavy\nat times.\n\n* Areal average rainfall amounts of 1 1/2 to 2 inches are\nexpected, with locally higher amounts of 2 to 4 inches possible.\nAny heavy rainfall that occurs within a 1 to 3 hour time frame\nmay result in flash flooding. The heaviest rainfall is expected\nin and around New York City, and also across portions of Long\nIsland and southern Connecticut.",
+                "instruction": "A Flash Flood Watch means that conditions may develop that lead\nto flash flooding. Flash flooding is a very dangerous situation.\nYou should monitor later forecasts and be prepared to take action\nshould flash flood warnings be issued.",
+                "response": "Monitor",
+                "parameters": {
+                    "NWSheadline": [
+                        "FLASH FLOOD WATCH REMAINS IN EFFECT FROM NOON EDT TODAY THROUGH LATE TONIGHT"
+                    ],
+                    "VTEC": [
+                        "/O.CON.KOKX.FF.A.0012.181011T1600Z-181012T1000Z/"
+                    ],
+                    "EAS-ORG": [
+                        "WXR"
+                    ],
+                    "PIL": [
+                        "OKXFFAOKX"
+                    ],
+                    "BLOCKCHANNEL": [
+                        "CMAS",
+                        "EAS",
+                        "NWEM"
+                    ],
+                    "eventEndingTime": [
+                        "2018-10-12T06:00:00-04:00"
+                    ]
+                }
+            }
+        },
+        {
+            "id": "https://api.weather.gov/alerts/NWS-IDP-PROD-3163864-2787697",
+            "type": "Feature",
+            "geometry": null,
+            "properties": {
+                "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-3163864-2787697",
+                "@type": "wx:Alert",
+                "id": "NWS-IDP-PROD-3163864-2787697",
+                "areaDesc": "Eastern Columbia; Bennington; Eastern Greene; Western Ulster; Western Greene; Eastern Windham; Northern Berkshire; Eastern Dutchess; Southern Litchfield; Southern Berkshire; Western Windham; Western Dutchess; Eastern Rensselaer; Western Rensselaer; Eastern Ulster; Northern Litchfield; Western Columbia",
+                "geocode": {
+                    "UGC": [
+                        "NYZ061",
+                        "VTZ013",
+                        "NYZ059",
+                        "NYZ063",
+                        "NYZ058",
+                        "VTZ015",
+                        "MAZ001",
+                        "NYZ066",
+                        "CTZ013",
+                        "MAZ025",
+                        "VTZ014",
+                        "NYZ065",
+                        "NYZ054",
+                        "NYZ053",
+                        "NYZ064",
+                        "CTZ001",
+                        "NYZ060"
+                    ],
+                    "SAME": [
+                        "036021",
+                        "050003",
+                        "036039",
+                        "036111",
+                        "050025",
+                        "025003",
+                        "036027",
+                        "009005",
+                        "036083"
+                    ]
+                },
+                "affectedZones": [
+                    "https://api.weather.gov/zones/forecast/NYZ061",
+                    "https://api.weather.gov/zones/forecast/VTZ013",
+                    "https://api.weather.gov/zones/forecast/NYZ059",
+                    "https://api.weather.gov/zones/forecast/NYZ063",
+                    "https://api.weather.gov/zones/forecast/NYZ058",
+                    "https://api.weather.gov/zones/forecast/VTZ015",
+                    "https://api.weather.gov/zones/forecast/MAZ001",
+                    "https://api.weather.gov/zones/forecast/NYZ066",
+                    "https://api.weather.gov/zones/forecast/CTZ013",
+                    "https://api.weather.gov/zones/forecast/MAZ025",
+                    "https://api.weather.gov/zones/forecast/VTZ014",
+                    "https://api.weather.gov/zones/forecast/NYZ065",
+                    "https://api.weather.gov/zones/forecast/NYZ054",
+                    "https://api.weather.gov/zones/forecast/NYZ053",
+                    "https://api.weather.gov/zones/forecast/NYZ064",
+                    "https://api.weather.gov/zones/forecast/CTZ001",
+                    "https://api.weather.gov/zones/forecast/NYZ060"
+                ],
+                "references": [
+                    {
+                        "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-3163034-2786884",
+                        "identifier": "NWS-IDP-PROD-3163034-2786884",
+                        "sender": "w-nws.webmaster@noaa.gov",
+                        "sent": "2018-10-10T22:58:00-04:00"
+                    }
+                ],
+                "sent": "2018-10-11T04:04:00-04:00",
+                "effective": "2018-10-11T04:04:00-04:00",
+                "onset": "2018-10-11T08:00:00-04:00",
+                "expires": "2018-10-11T18:00:00-04:00",
+                "ends": "2018-10-12T02:00:00-04:00",
+                "status": "Actual",
+                "messageType": "Update",
+                "category": "Met",
+                "severity": "Severe",
+                "certainty": "Possible",
+                "urgency": "Future",
+                "event": "Flash Flood Watch",
+                "sender": "w-nws.webmaster@noaa.gov",
+                "senderName": "NWS Albany NY",
+                "headline": "Flash Flood Watch issued October 11 at 4:04AM EDT expiring October 12 at 2:00AM EDT by NWS Albany NY",
+                "description": "The Flash Flood Watch continues for\n\n* Flash Flood Watch for the following counties: Litchfield,\nBerkshire, Bennington, Windham, Columbia, Dutchess, Greene,\nRensselaer and Ulster.\n\n* From 8 AM EDT this morning through late tonight\n\n* Thanks to a tropical air mass in place, repeated bands of\nshowers and isolated thunderstorms will be capable of heavy\ndownpours today into this evening. Rainfall rates may reach\nclose to one inch per hour at times.\n\n* This rainfall will result in ponding of water in urban, poor\ndrainage and low lying areas. If repeated rounds of heavy\nrainfall occur over the same areas, flash flooding will be\npossible.",
+                "instruction": "A Flash Flood Watch means that conditions may develop that lead\nto flash flooding. Flash flooding is a very dangerous situation.\n\nYou should monitor later forecasts and be prepared to take action\nshould Flash Flood Warnings be issued.",
+                "response": "Monitor",
+                "parameters": {
+                    "NWSheadline": [
+                        "FLASH FLOOD WATCH REMAINS IN EFFECT FROM 8 AM EDT THIS MORNING THROUGH LATE TONIGHT"
+                    ],
+                    "VTEC": [
+                        "/O.CON.KALY.FF.A.0009.181011T1200Z-181012T0600Z/"
+                    ],
+                    "EAS-ORG": [
+                        "WXR"
+                    ],
+                    "PIL": [
+                        "ALYFFAALY"
+                    ],
+                    "BLOCKCHANNEL": [
+                        "CMAS",
+                        "EAS",
+                        "NWEM"
+                    ],
+                    "eventEndingTime": [
+                        "2018-10-12T02:00:00-04:00"
+                    ]
+                }
+            }
+        },
+        {
+            "id": "https://api.weather.gov/alerts/NWS-IDP-PROD-3161945-2785917",
+            "type": "Feature",
+            "geometry": null,
+            "properties": {
+                "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-3161945-2785917",
+                "@type": "wx:Alert",
+                "id": "NWS-IDP-PROD-3161945-2785917",
+                "areaDesc": "Southern New Haven; Southern Westchester; Southern Fairfield",
+                "geocode": {
+                    "UGC": [
+                        "CTZ010",
+                        "NYZ071",
+                        "CTZ009"
+                    ],
+                    "SAME": [
+                        "009009",
+                        "036119",
+                        "009001"
+                    ]
+                },
+                "affectedZones": [
+                    "https://api.weather.gov/zones/forecast/CTZ010",
+                    "https://api.weather.gov/zones/forecast/NYZ071",
+                    "https://api.weather.gov/zones/forecast/CTZ009"
+                ],
+                "references": [],
+                "sent": "2018-10-10T16:45:00-04:00",
+                "effective": "2018-10-10T16:45:00-04:00",
+                "onset": "2018-10-11T12:00:00-04:00",
+                "expires": "2018-10-11T06:00:00-04:00",
+                "ends": "2018-10-11T15:00:00-04:00",
+                "status": "Actual",
+                "messageType": "Alert",
+                "category": "Met",
+                "severity": "Minor",
+                "certainty": "Likely",
+                "urgency": "Expected",
+                "event": "Coastal Flood Statement",
+                "sender": "w-nws.webmaster@noaa.gov",
+                "senderName": "NWS Upton NY",
+                "headline": "Coastal Flood Statement issued October 10 at 4:45PM EDT expiring October 11 at 3:00PM EDT by NWS Upton NY",
+                "description": "* LOCATIONS...Shorelines of Fairfield, New Haven, and\nWestchester counties.\n\n* TIDAL DEPARTURE...Around 1 ft above astronomical.\n\n* COASTAL FLOOD IMPACTS...Brief minor flooding of the most\nvulnerable locations near the waterfront and shoreline.\n\n* TIMING...Around the times of high tide late Thursday morning\nand early afternoon.",
+                "instruction": "",
+                "response": "Monitor",
+                "parameters": {
+                    "NWSheadline": [
+                        "ISOLATED MINOR COASTAL FLOODING AROUND THE TIMES OF HIGH TIDE LATE THURSDAY MORNING AND EARLY AFTERNOON"
+                    ],
+                    "VTEC": [
+                        "/O.NEW.KOKX.CF.S.0053.181011T1600Z-181011T1900Z/"
+                    ],
+                    "PIL": [
+                        "OKXCFWOKX"
+                    ],
+                    "BLOCKCHANNEL": [
+                        "CMAS",
+                        "EAS",
+                        "NWEM"
+                    ],
+                    "eventEndingTime": [
+                        "2018-10-11T15:00:00-04:00"
+                    ]
+                }
+            }
+        },
+        {
+            "id": "https://api.weather.gov/alerts/NWS-IDP-PROD-3161944-2785915",
+            "type": "Feature",
+            "geometry": null,
+            "properties": {
+                "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-3161944-2785915",
+                "@type": "wx:Alert",
+                "id": "NWS-IDP-PROD-3161944-2785915",
+                "areaDesc": "Southern Queens; Southern Nassau; Southwest Suffolk",
+                "geocode": {
+                    "UGC": [
+                        "NYZ178",
+                        "NYZ179",
+                        "NYZ080"
+                    ],
+                    "SAME": [
+                        "036081",
+                        "036059",
+                        "036103"
+                    ]
+                },
+                "affectedZones": [
+                    "https://api.weather.gov/zones/forecast/NYZ178",
+                    "https://api.weather.gov/zones/forecast/NYZ179",
+                    "https://api.weather.gov/zones/forecast/NYZ080"
+                ],
+                "references": [],
+                "sent": "2018-10-10T16:45:00-04:00",
+                "effective": "2018-10-10T16:45:00-04:00",
+                "onset": "2018-10-11T09:00:00-04:00",
+                "expires": "2018-10-11T06:00:00-04:00",
+                "ends": "2018-10-11T13:00:00-04:00",
+                "status": "Actual",
+                "messageType": "Alert",
+                "category": "Met",
+                "severity": "Minor",
+                "certainty": "Likely",
+                "urgency": "Expected",
+                "event": "Coastal Flood Statement",
+                "sender": "w-nws.webmaster@noaa.gov",
+                "senderName": "NWS Upton NY",
+                "headline": "Coastal Flood Statement issued October 10 at 4:45PM EDT expiring October 11 at 1:00PM EDT by NWS Upton NY",
+                "description": "* LOCATIONS...Along the south shore back bays of Queens, Nassau,\nand southwestern Suffolk counties.\n\n* TIDAL DEPARTURE...Around 1 to locally 2 ft above astronomical.\n\n* COASTAL FLOOD IMPACTS...Brief minor flooding of the most\nvulnerable locations near the waterfront and shoreline.\n\n* TIMING...Around the times of high tide Thursday morning.",
+                "instruction": "",
+                "response": "Monitor",
+                "parameters": {
+                    "NWSheadline": [
+                        "ISOLATED MINOR COASTAL FLOODING AROUND THE TIMES OF HIGH TIDE THURSDAY MORNING"
+                    ],
+                    "VTEC": [
+                        "/O.NEW.KOKX.CF.S.0053.181011T1300Z-181011T1700Z/"
+                    ],
+                    "PIL": [
+                        "OKXCFWOKX"
+                    ],
+                    "BLOCKCHANNEL": [
+                        "CMAS",
+                        "EAS",
+                        "NWEM"
+                    ],
+                    "eventEndingTime": [
+                        "2018-10-11T13:00:00-04:00"
+                    ]
+                }
+            }
+        }
+    ],
+    "title": "Current watches, warnings, and advisories for New York",
+    "updated": "2018-10-11T08:23:27+00:00"
+}

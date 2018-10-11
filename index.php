@@ -13,7 +13,7 @@
 <body>
 	<table width="1200">
 		<tr>
-		<td>
+		<td width=800>
 			<div id="mapframe" class="column"></div>
 		</td>
 		<td align=left>
@@ -24,13 +24,18 @@
 				<label><span>Highest Temperature: </span><input type="text" id="temphigh" value="<? echo $_GET['HT'] ? $_GET['HT'] : 100 ?>"><img src='img/sunny.png'></label>
 				<label><span>Highest Heat Index: </span><input type="text" id="heathigh" value="<? echo $_GET['HH'] ? $_GET['HH'] : 100 ?>"><img src='img/heat.png'></label>
 				<label><span>Highest Wind Speed: </span><input type="text" id="windhigh" value="<? echo $_GET['HW'] ? $_GET['HW'] : 12 ?>"><img src='img/windy.png'></label>
-				<label><span>Highest Snow Fall (inches): </span><input type="text" id="snowhigh" value="<? echo $_GET['HS'] ? $_GET['HS'] : 5 ?>"><img src='img/snowy.png'></label>
+				<label><span>Highest Snow Fall (inches): </span><input type="text" id="snowhigh" value="<? echo $_GET['HS'] ? $_GET['HS'] : 3 ?>"><img src='img/snowy.png'></label>
 				<label><span>Highest Rain Fall (inches): </span><input type="text" id="rainhigh" value="<? echo $_GET['HR'] ? $_GET['HR'] : 3 ?>"><img src='img/rainy.png'></label>
 				<label><span></span><input type="button" class="button" onclick="myFunction()" value="Refresh"></label>
 				</form>
 			</div>
 			<hr><div class='rtxt'>Forecast Range: <? include("range.txt"); ?></div>
 		</td>
+		</tr>
+		<tr>
+		<td>
+		<? echo GetAlerts(); ?>
+		</td><td></td>
 		</tr>
 	</table>
 <script>
@@ -161,5 +166,37 @@ function drawMap() {
 
 };
 </script>
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+</script>
 </body>
 </html>
+<?
+function GetAlerts() {
+	$str = file_get_contents('wdata/alerts');
+	$json = json_decode($str, true);
+	//echo '<pre>' . print_r($json, true) . '</pre>';
+	foreach ($json['features'] as $k => $v){
+		$tmp .= '<button class="collapsible">';
+		$tmp .= htmlentities($json['features'][$k]['properties']['headline']);
+		$tmp .= '</button>';
+		$tmp .= '<div class="content">';
+		$tmp .= htmlentities($json['features'][$k]['properties']['description']);
+		$tmp .= '</div>';
+	}
+	return str_replace('*','<br><br>*',$tmp);
+}
+?>

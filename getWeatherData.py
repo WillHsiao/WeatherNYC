@@ -24,9 +24,22 @@ def GetForecastURL(url, fname):
 #		for block in r2.iter_content(1024):
 #			handle.write(block)
 
+def GetAnyURL(url, fname):
+	print(fname)
+	print(url)
+	token = 'kSOuCoucFpFZxAgfjKIYTuwjDBaFCBka'
+	creds = dict(token=token)
+ 
+	r1 = requests.get(url, headers=creds)
+	with open("wdata/" + fname, 'wb') as handle:
+		for block in r1.iter_content(1024):
+			handle.write(block)
+
 with open('ziplist_geo.csv', newline='') as csvfile:
 	reader = csv.reader(csvfile, delimiter=',')
 	next(reader, None)
 	for A, borough, area, zipCode, helper, latitude, longitude in reader:
 		url = 'https://api.weather.gov/points/' + latitude + ',' + longitude
 		GetForecastURL(url, zipCode)
+
+GetAnyURL('https://api.weather.gov/alerts/active/area/NY', 'alerts')

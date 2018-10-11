@@ -4,11 +4,11 @@
 	"phone": "+17166660511",
 	"threshold":
 		{
-			"templow": "50",
+			"templow": "32",
 			"temphigh": "100",
 			"heathigh": "100",
 			"windhigh": "12",
 			"snowhigh": "0.1",
-			"rainhigh": "0.3"
+			"rainhigh": "1"
 		}
 }
