@@ -29,7 +29,7 @@
 				<label><span></span><input type="button" class="button" onclick="myFunction()" value="Refresh"></label>
 				</form>
 			</div>
-			<hr><div class='rtxt'>Forecast Range: <? include("range.txt"); ?></div>
+			<hr><div class='rtxt'>Forecast Range: <? include("range.txt"); ?> </div>
 		</td>
 		</tr>
 		<tr>

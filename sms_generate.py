@@ -12,6 +12,7 @@ def getZipInfo(zip):
 
 class GetValue:
 	now = pytz.utc.localize(datetime.utcnow())
+	TimeNow = now.astimezone(pytz.timezone("US/Eastern"))
 	TimeStart = now.astimezone(pytz.timezone("US/Eastern"))
 	TimeEnd   = now.astimezone(pytz.timezone("US/Eastern"))
 	def __init__(self, r, target):
@@ -22,6 +23,10 @@ class GetValue:
 		df.columns = ['Time', 'c1'] #rename pandas column header
 		df['Time'] = pd.to_datetime(df['Time'].str[:16].replace('T', ' ')) #convert to time format
 		df['Time'] = df['Time'].dt.tz_localize('UTC').dt.tz_convert('US/Eastern') #convert to EST time zone
+
+		df = df[df['Time'] >= GetValue.TimeNow] #filter out the forecast time in the past
+		if df.empty == True:
+			return None
 
 		GetValue.TimeStart = df['Time'].min()
 		if GetValue.TimeStart > df['Time'].min():
@@ -50,7 +55,7 @@ for filename in os.listdir('sns'):
 		u = json.load(p)
 		print(filename + ': ' + u['phone'])
 		for filename in os.listdir('wdata'):
-			if filename[-1] == 'f':
+			if filename[-1] == 'f' or filename[0] == 'a':
 				continue
 			with open('wdata/' + filename) as f:
 				r = json.load(f)
@@ -62,18 +67,23 @@ for filename in os.listdir('sns'):
 			v_rain = GetValue(r, 'quantitativePrecipitation')
 			v_heat = GetValue(r, 'heatIndex')
 
-			if v_temp.getAll()['Low']*1.8+32 <= float(u['threshold']['templow']):
-				res['templow'] += 1
-			if v_temp.getAll()['High']*1.8+32 >= float(u['threshold']['temphigh']):
-				res['temphigh'] += 1
-			if v_heat.getAll()['High']*1.8+32 >= float(u['threshold']['heathigh']):
-				res['heathigh'] += 1
-			if round(v_snow.getAll()['High']*0.0393701,1) >= float(u['threshold']['snowhigh']):
-				res['snowhigh'] += 1
-			if v_wind.getAll()['High'] >= float(u['threshold']['windhigh']):
-				res['windhigh'] += 1
-			if round(v_rain.getAll()['High']*0.0393701,1) >= float(u['threshold']['rainhigh']):
-				res['rainhigh'] += 1
+			if v_temp.getAll() is not None:
+				if v_temp.getAll()['Low']*1.8+32 <= float(u['threshold']['templow']):
+					res['templow'] += 1
+				if v_temp.getAll()['High']*1.8+32 >= float(u['threshold']['temphigh']):
+					res['temphigh'] += 1
+			if v_heat.getAll() is not None:
+				if v_heat.getAll()['High']*1.8+32 >= float(u['threshold']['heathigh']):
+					res['heathigh'] += 1
+			if v_snow.getAll() is not None:
+				if round(v_snow.getAll()['High']*0.0393701,1) >= float(u['threshold']['snowhigh']):
+					res['snowhigh'] += 1
+			if v_wind.getAll() is not None:
+				if v_wind.getAll()['High'] >= float(u['threshold']['windhigh']):
+					res['windhigh'] += 1
+			if v_rain.getAll() is not None:
+				if round(v_rain.getAll()['High']*0.0393701,1) >= float(u['threshold']['rainhigh']):
+					res['rainhigh'] += 1
 			#latitude, longitude = map(float, (zInfo['latitude'], zInfo['longitude']))
 			
 	#print(res)
@@ -89,7 +99,7 @@ for filename in os.listdir('sns'):
 			q['msg'] = Msg
 			q = json.dumps(q)
 			print(q)
-			with open('sns/sms' + u['fname'], "w") as f:
+			with open('sns/sms_' + u['fname'], "w") as f:
 				f.write('%s' % q)
 
 #with open("range.txt", "w") as f:

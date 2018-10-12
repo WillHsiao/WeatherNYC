@@ -36,6 +36,16 @@ class GetValue:
 		df['Time'] = df['Time'].dt.tz_localize('UTC').dt.tz_convert('US/Eastern') #convert to EST time zone
 		
 		df = df[df['Time'] >= GetValue.TimeNow] #filter out the forecast time in the past
+		if df.empty == True:
+			return None
+#			return {'Low':     None,
+#				'High':    None,
+#				'LowTime': None,
+#				'LowTimeDesc': None,
+#				'HighTime':    None,
+#				'HighTimeDesc':None
+#				}
+
 
 		if GetValue.TimeStart > df['Time'].min():
 			GetValue.TimeStart = df['Time'].min()
@@ -65,7 +75,7 @@ class GetValue:
 
 features = []
 for filename in os.listdir('wdata'):
-	if filename[-1] == 'f':
+	if filename[-1] == 'f' or filename[0] == 'a':
 		continue
 	print(filename)
 #	with open('wdata/' + filename + '_f') as f2:
@@ -88,36 +98,91 @@ for filename in os.listdir('wdata'):
 	v_rain = GetValue(r, 'quantitativePrecipitation', r2)
 	v_heat = GetValue(r, 'heatIndex', r2)
 
+	TempLow = ''
+	TempLowV = ''
+	TempLowTime = ''
+	TempLowTimeDesc = ''
+	TempHigh = ''
+	TempHighV = ''
+	TempHighTime = ''
+	TempHighTimeDesc = ''
+	HeatHigh = ''
+	HeatHighV = ''
+	HeatHighTime = ''
+	HeatHighTimeDesc = ''
+	WindHigh = ''
+	WindHighV = ''
+	WindHighTime = ''
+	WindHighTimeDesc = ''
+	SnowHigh = ''
+	SnowHighV = ''
+	SnowHighTime = ''
+	SnowHighTimeDesc = ''
+	RainHigh = ''
+	RainHighV = ''
+	RainHighTime = ''
+	RainHighTimeDesc = ''
+	
+	if v_temp.getAll() is not None:
+		TempLow = str(int(round(v_temp.getAll()['Low'] * 1.8 + 32, 0)))
+		TempLowV = int(round(v_temp.getAll()['Low'] * 1.8 + 32, 0))
+		TempLowTime = v_temp.getAll()['LowTime']
+		TempLowTimeDesc = v_temp.getAll()['LowTimeDesc']
+		TempHigh = str(int(round(v_temp.getAll()['High']* 1.8 + 32, 0)))
+		TempHighV = int(round(v_temp.getAll()['High']* 1.8 + 32, 0))
+		TempHighTime = v_temp.getAll()['HighTime']
+		TempHighTimeDesc = v_temp.getAll()['HighTimeDesc']
+	if v_heat.getAll() is not None:
+		HeatHigh = str(int(round(v_heat.getAll()['High']* 1.8 + 32, 0)))
+		HeatHighV = int(round(v_heat.getAll()['High']* 1.8 + 32, 0))
+		HeatHighTime = v_heat.getAll()['HighTime']
+		HeatHighTimeDesc = v_heat.getAll()['HighTimeDesc']
+	if v_wind.getAll() is not None:
+		WindHigh = str(round(v_wind.getAll()['High'],1)) + ' mph'
+		WindHighV = round(v_wind.getAll()['High'],1)
+		WindHighTime = v_wind.getAll()['HighTime']
+		WindHighTimeDesc = v_wind.getAll()['HighTimeDesc']
+	if v_snow.getAll() is not None:
+		SnowHigh = str(round(v_snow.getAll()['High'] * 0.0393701,1)) + ' in'
+		SnowHighV = round(v_snow.getAll()['High'] * 0.0393701,1)
+		SnowHighTime = v_snow.getAll()['HighTime']
+		SnowHighTimeDesc = v_snow.getAll()['HighTimeDesc']
+	if v_rain.getAll() is not None:
+		RainHigh = str(round(v_rain.getAll()['High'] * 0.0393701,1)) + ' in'
+		RainHighV = round(v_rain.getAll()['High'] * 0.0393701,1)
+		RainHighTime = v_rain.getAll()['HighTime']
+		RainHighTimeDesc = v_rain.getAll()['HighTimeDesc']
+
 	latitude, longitude = map(float, (zInfo['latitude'], zInfo['longitude']))
 	features.append(
 		Feature(
 			geometry = Point((longitude, latitude)),
 			properties = {
 				'Area': zInfo['area'].to_string(index=False) + ' (' + zInfo['borough'].to_string(index=False) + ')',
-				'TempLow':  str(int(round(v_temp.getAll()['Low'] * 1.8 + 32, 0))),
-				'TempLowV': int(round(v_temp.getAll()['Low'] * 1.8 + 32, 0)),
-				'TempLowTime': v_temp.getAll()['LowTime'],
-				'TempLowTimeDesc': v_temp.getAll()['LowTimeDesc'],
-				'TempHigh': str(int(round(v_temp.getAll()['High']* 1.8 + 32, 0))),
-				'TempHighV': int(round(v_temp.getAll()['High']* 1.8 + 32, 0)),
-				'TempHighTime': v_temp.getAll()['HighTime'],
-				'TempHighTimeDesc': v_temp.getAll()['HighTimeDesc'],
-				'HeatHigh': str(int(round(v_heat.getAll()['High']* 1.8 + 32, 0))),
-				'HeatHighV': int(round(v_heat.getAll()['High']* 1.8 + 32, 0)),
-				'HeatHighTime': v_heat.getAll()['HighTime'],
-				'HeatHighTimeDesc': v_heat.getAll()['HighTimeDesc'],
-				'WindHigh': str(round(v_wind.getAll()['High'],1)) + ' mph',
-				'WindHighV': round(v_wind.getAll()['High'],1),
-				'WindHighTime': v_wind.getAll()['HighTime'],
-				'WindHighTimeDesc': v_wind.getAll()['HighTimeDesc'],
-				'SnowHigh': str(round(v_snow.getAll()['High'] * 0.0393701,1)) + ' in',
-				'SnowHighV': round(v_snow.getAll()['High'] * 0.0393701,1),
-				'SnowHighTime': v_snow.getAll()['HighTime'],
-				'SnowHighTimeDesc': v_snow.getAll()['HighTimeDesc'],
-				'RainHigh': str(round(v_rain.getAll()['High'] * 0.0393701,1)) + ' in',
-				'RainHighV': round(v_rain.getAll()['High'] * 0.0393701,1),
-				'RainHighTime': v_rain.getAll()['HighTime'],
-				'RainHighTimeDesc': v_rain.getAll()['HighTimeDesc']
+				'TempLow':  TempLow,
+				'TempLowV': TempLowV,
+				'TempLowTime': TempLowTime,
+				'TempLowTimeDesc': TempLowTimeDesc,
+				'TempHigh': TempHigh,
+				'TempHighV': TempHighV,
+				'TempHighTime': TempHighTime,
+				'TempHighTimeDesc': TempHighTimeDesc,
+				'HeatHigh': HeatHigh,
+				'HeatHighV': HeatHighV,
+				'HeatHighTime': HeatHighTime,
+				'HeatHighTimeDesc': HeatHighTimeDesc,
+				'WindHigh': WindHigh,
+				'WindHighV': WindHighV,
+				'WindHighTime': WindHighTime,
+				'WindHighTimeDesc': WindHighTimeDesc,
+				'SnowHigh': SnowHigh,
+				'SnowHighV': SnowHighV,
+				'SnowHighTime': SnowHighTime,
+				'SnowHighTimeDesc': SnowHighTimeDesc,
+				'RainHigh': RainHigh,
+				'RainHighV': RainHighV,
+				'RainHighTime': RainHighTime,
+				'RainHighTimeDesc': RainHighTimeDesc
 
 			}
 		)
