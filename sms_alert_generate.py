@@ -25,5 +25,5 @@ with open('wdata/alerts') as alertfile:
 			q['msg'] = Msg
 			q = json.dumps(q)
 			print(q)
-			with open('sns/sms_alert_' + u['fname'] + u['id'], "w") as f:
+			with open('sns/sms_alert_' + u['fname'] + x['properties']['id'], "w") as f:
 				f.write('%s' % q)
