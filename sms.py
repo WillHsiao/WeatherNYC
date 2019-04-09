@@ -1,4 +1,4 @@
-import boto3, os, json
+import boto3, os, json, time
 
 def sendsms(pnum, msg):
 	with open('../key') as p:
@@ -10,11 +10,19 @@ def sendsms(pnum, msg):
 		region_name="us-east-1"
 	)
 
+	# set message type
+	#response = client.set_sms_attributes(
+	#	attributes = {
+	#		'DefaultSMSType': 'Transactional'
+	#	}
+	#)
+
 	# Send your sms message.
-	client.publish(
+	response = client.publish(
 		PhoneNumber = pnum,
 		Message = msg
 	)
+	print("Response: {}".format(response))
 
 for filename in os.listdir('sns'):
 	if filename[:3] != 'sms':
@@ -22,4 +30,6 @@ for filename in os.listdir('sns'):
 	with open('sns/' + filename) as p:
 		u = json.load(p)
 	sendsms(u['phone'],u['msg'])
+	#print(u['phone'],u['msg'])
+	time.sleep(3)
 	os.remove('sns/' + filename)

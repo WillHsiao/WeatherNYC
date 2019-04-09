@@ -1,4 +1,4 @@
 cd /var/www/html/
 source env/bin/activate
-/usr/bin/python getWeatherData.py
-/usr/bin/python csv2geojson.py
+/usr/bin/python36 getWeatherData.py
+/usr/bin/python36 csv2geojson.py

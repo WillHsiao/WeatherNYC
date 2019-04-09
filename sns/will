@@ -1,14 +1,14 @@
 {
 	"fname": "will",
 	"username": "Will Hsiao",
-	"phone": "+17166660511",
+	"phone": "+17167777777",
 	"threshold":
 		{
 			"templow": "32",
 			"temphigh": "100",
 			"heathigh": "100",
-			"windhigh": "12",
-			"snowhigh": "0.1",
-			"rainhigh": "1"
+			"windhigh": "13",
+			"snowhigh": "0.3",
+			"rainhigh": "1.5"
 		}
 }

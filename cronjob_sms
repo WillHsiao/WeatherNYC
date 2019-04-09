@@ -1,5 +1,5 @@
 cd /var/www/html/
 source env/bin/activate
-/usr/bin/python sms_generate.py
-/usr/bin/python sms_alert_generate.py
-/usr/bin/python sms.py
+/usr/bin/python3 sms_generate.py
+#/usr/bin/python3 sms_alert_generate.py
+/usr/bin/python3 sms.py
